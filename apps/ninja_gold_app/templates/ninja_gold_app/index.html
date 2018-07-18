@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ninja_gold_app/style.css' %}" />
+    <title>Document</title>
+</head>
+<body>
+    <h1>NINJA GOLD</h1>
+    <p id = "gold_line">curent gold: {{request.session.gold}}</p>
+    <button id ="reset" type=""><a href='/ninja_gold_app/reset'>Reset Game</a></button>
+    <br>
+    <div class = "location">
+        <h3>Farm</h3>
+        <p>(earns 10-20 gold)</p>
+        <form action='process' method='POST'>
+            {% csrf_token %}
+            <!-- value of 52 is for farm -->
+            <input type = 'hidden' name = "activity" value = "52">
+            <input type='submit' value='Find Gold!'>
+        </form>
+    </div>
+    <div class = "location">
+        <h3>Cave</h3>
+        <p>(earns 5-10 gold)</p>
+        <form action='process' method='POST'>
+            {% csrf_token %}
+            <!-- value of 105 is for cave -->
+            <input type = 'hidden' name = "activity" value = "105">
+            <input type='submit' value='Find Gold!'>
+        </form>
+    </div>
+    <div class = "location">
+        <h3>House</h3>
+        <p>(earns 2-5 gold)</p>
+        <form action='process' method='POST'>
+            {% csrf_token %}
+            <!-- value of 7 is for house -->
+            <input type = 'hidden' name = "activity" value = "7">
+            <input type='submit' value='Find Gold!'>
+        </form>
+    </div>
+    <div class = "location">
+        <h3>Casino</h3>
+        <p>(earns/takes 0-50 gold)</p>
+        <form action='process' method='POST'>
+            {% csrf_token %}
+            <!-- value of 99 is for casino -->
+            <input type = 'hidden' name = "activity" value = "99">
+            <input type='submit' value='Find Gold!'>
+        </form>
+    </div>
+    <h5>Activities</h5>
+    <div id = "activity_box">
+        {% for activity in request.session.activity_log %}
+            <p class="{{activity.1}}">{{activity.0}}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+div {
+    display: inline-block;
+    vertical-align: top;
+}
+#gold_line {
+    display: inline-block;
+}
+
+#reset {
+    display: inline-block;
+    margin-left: 650px;
+}
+
+.location {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+#activity_box {
+    height: 200px;
+    width: 800px;
+    border: 1px solid black;
+    overflow: auto;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
